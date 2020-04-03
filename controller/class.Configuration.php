@@ -13,6 +13,7 @@
 
         public $SiteName = "SEObetter";
         public $SiteSlogan = "See You Better!";
+        public $templateSkin = 1;
 
         private function __construct() {
             define("TEMPLATE", "template/");
