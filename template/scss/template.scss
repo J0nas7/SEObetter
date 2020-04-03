@@ -1,0 +1,641 @@
+@import "styles.scss";
+@import "pages/page.login.scss";
+
+@mixin brdr-radius($val) {
+    border-radius:          $val;
+    -moz-border-radius:     $val;
+    -webkit-border-radius:  $val;
+}
+
+*, html {
+    top: 0;
+    left: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+ul {
+    list-style-type: none;
+}
+
+th {
+    text-align: left;
+}
+
+body {
+    background: #dedede;
+    font-family: Verdana, sans-serif;
+    font-size: 15px;
+}
+
+.topbar {
+    width: 100%;
+    height: 50px;
+    background: #222;
+    position: fixed;
+    z-index: 1;
+
+    .topbar-center {
+        @media (min-width: 500px) {
+            padding: 0 20px;
+        }
+    }
+
+    .logo {
+        width: 86px;
+        height: 45px;
+        background: url("../img/topbar-logo.png") no-repeat;
+        margin-top: 2.5px;
+        float: left;
+        cursor: pointer;
+    }
+
+    .applesign {
+        float: left;
+        width: auto;
+        height: auto;
+        font-size: 18px;
+        color: #fff;
+        padding-top: 12px;
+        padding-left: 12px;
+        display:  none;
+
+        @media (min-width: 233px) {
+            display: block;
+        }
+    }
+
+    .menuTrigger {
+        float: right;
+        margin-top: 5px;
+        margin-right: 12px;
+        transition: 0.4s;
+        width: 35px;
+        height: 35px;
+        position: relative;
+
+        @media (min-width: 500px) {
+            display: none;
+        }
+
+        .hamburger {
+            width: 35px;
+            height: 4px;
+            display: block;
+            background: #fff;
+            transition: 0.4s;
+            position: absolute;
+
+            &#one { margin-top: 6px; }
+            &#two { margin-top: 16px; }
+            &#three { margin-top: 26px; }
+        }
+
+        .x {
+            transition: 0.4s;
+            opacity: 0;
+            width: 42px;
+            height: 4px;
+            display: block;
+            background: #fff;
+            position: absolute;
+
+            &#one {
+                transform: rotate(-45deg);
+                margin-top: 16px;
+                margin-left: -3px;
+            }
+
+            &#two {
+                transform: rotate(+45deg);
+                margin-top: 16px;
+                margin-left: -3px;
+            }
+        }
+
+        &.triggered {
+            transform: rotate(-90deg);
+
+            .hamburger {
+                opacity: 0;
+            }
+
+            .x {
+                opacity: 1;
+            }
+        }
+    }
+
+    .topmenu {
+        position: absolute;
+        cursor: pointer;
+        top: 50px;
+        left: 100%;
+        background: #222;
+        width: 100%;
+        z-index: 1;
+        border-top: 1px #111 solid;
+        padding: 10px 20px;
+        transition: 0.4s;
+
+        @media (min-width: 500px) {
+            position: relative;
+            left: 0;
+            top: 0;
+            float: right;
+            width: auto;
+            padding: 10px 0;
+            transition: 0s;
+        }
+
+        li {
+            display: block;
+            width: 100%;
+            text-align: left;
+            padding: 5px 0;
+
+            @media (min-width: 500px) {
+                float: left;
+                width: auto;
+                margin-right: 15px;
+
+                &:last-child {
+                    margin-right: 0;
+                }
+            }
+
+            a {
+                color: #fff;
+                text-decoration: none;
+            }
+        }
+
+        &.open {
+            left: 0;
+        }
+    }
+}
+
+.bottombar {
+    width: 100%;
+    height: 50px;
+    background: #b7c385;
+    position: fixed;
+    z-index: 1;
+    top: auto;
+    bottom: 0;
+
+    &.pause, &.stop {
+        background: #e9c388;
+    }
+
+    .player {
+        width: 80%;
+        margin: 0 auto;
+        margin-top: 15px;
+
+        .ctrlBtn {
+            &.play {
+                background: url("../img/pauseBtn.png") no-repeat;
+            }
+            &.pause {
+                background: url("../img/playBtn.png") no-repeat;
+            }
+            &.stop {
+                display: none;
+            }
+        }
+        .ctrlBtn2 {
+            &.stop {
+                background: url("../img/stopBtn.png") no-repeat;
+            }
+        }
+
+        .curTask, .pauseTask {
+            width: calc(100% - 177px);
+            float: left;
+            overflow-x: hidden;
+        }
+        &.play .pauseTask, &.stop .pauseTask { display: none; }
+        &.pause .curTask { display: none; }
+        &.stop {
+            .ctrlBtn2.stop {
+                display: none;
+            }
+        }
+
+        .counter {
+            color: #697048;
+            float: right;
+
+            span, strong {
+                float: left;
+            }
+        }
+    }
+
+    &.Error {
+        background: #5e0f00;
+        color: #fff;
+    }
+
+    .FooterMsg {
+        display: block;
+        margin-top: 13px;
+        margin-left: 10px;
+    }
+}
+
+.Bodycover {
+    display: none;
+}
+body.cover {
+    overflow: hidden;
+
+    .Bodycover {
+        position: fixed;
+        width: 100%;
+        height: 100%;
+        z-index: 2;
+        display: block;
+    
+        &.with-bg {
+            background: rgba(200,200,200,.5);
+        }
+    }
+}
+
+.topbar-center, .pageWrapper {
+    width: 100%;
+    max-width: 960px;
+    height: auto;
+    margin: 0 auto;
+    position: relative;
+}
+
+.pageWrapper {
+    margin-top: 50px;
+    padding: 30px;
+
+    .pageHeader {
+        font-size: 27px;
+        font-weight: bold;
+        font-family: 'Asap', sans-serif;
+        color: #000;
+        display: block;
+        margin: 20px 0;
+        clear: left;
+
+        .stopwatch {
+            float: right;
+            height: 30px;
+            display: block;
+            background: url(../img/stopwatch.png) no-repeat;
+            font-size: 15px;
+            background-position: right;
+            padding-top: 7px;
+            cursor: pointer;
+
+            &.workspace {
+                width: 300px;
+            }
+            &.project {
+                width: 230px;
+            }
+
+            .txt {
+                display: none;
+            }
+            &:hover .txt {
+                display: block;
+            }
+        }
+    }
+
+    .pageHeader:first-child {
+        margin-top: 0;
+    }
+
+    .mainContent {
+        &.mostused {
+            position: relative;
+
+            .todo {
+                .task_title, .task_desc {
+                    float: left;
+                }
+                .task_desc {
+                    margin-left: 5px;
+                }
+
+                .task_counter {
+                    float: right;
+                }
+            }
+
+            .mostused-controllers {
+                position: fixed;
+                z-index: 3;
+                width: 80%;
+                height: 250px;
+                background: #fff;
+                border: 1px #bbb solid;
+                padding: 10px;
+                left: 10%;
+                margin-top: 150px;
+                display: none;
+
+                .actions {
+                    float: left;
+                    width: 100%;
+                    text-align: center;
+                    font-weight: bold;
+                    margin-bottom: 10px;
+                }
+
+                .title, .control {
+                    clear: both;
+                    float: left;
+                }
+
+                .close {
+                    display: block;
+                    background: #ddd;
+                    padding: 2px;
+                    @include brdr-radius(100%);
+                    width: 22px;
+                    height: 22px;
+                    text-align: center;
+                    font-weight: normal;
+                    cursor: pointer;
+                }
+            }
+        }
+    }
+}
+
+.readall-list {
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+
+    li {
+        background: #fff;
+        border: 1px #bbb solid;
+        margin-bottom: 10px;
+        padding: 10px;
+        float: left;
+        width: 100%;
+
+        &:hover {
+            background: #ccc;
+            cursor: pointer;
+
+            strong {
+                text-decoration: underline;
+            }
+        }
+    }
+
+    &.mostused {
+        .todo {
+            margin-bottom: 0;
+
+            .workable .desc {
+                font-size: 9px;
+            }
+        }
+    }
+}
+
+.smallCreateBtn {
+    clear: both;
+}
+
+.bigCreateBtn {
+    width: 100%;
+    height: 150px;
+    background: #fff;
+    border: 1px #bbb solid;
+    float: left;
+
+    .btn {
+        color: green;
+        font-size: 45px;
+        margin: 15px 0;
+    }
+
+    .txt {
+        font-size: 20px;
+    }
+
+    .btn, .txt {
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+
+    &:hover {
+        background: #ccc;
+        cursor: pointer;
+
+        .txt {
+            text-decoration: underline;
+        }
+    }
+}
+
+.todolist {
+    margin-bottom: 20px;
+
+    .readall-list {
+        float: left;
+    }
+
+    .listtitle {
+        margin-bottom: 10px;
+        display: block;
+    }
+
+    li {
+        margin-bottom: 0;
+    }
+}
+
+.workable {
+    .ctrlBtn {
+        &.play {
+            background: url("../img/playBtn.png") no-repeat;
+        }
+        &.pause {
+            background: url("../img/pauseBtn.png") no-repeat;
+        }
+    }
+}
+
+.ctrlBtn, .ctrlBtn2 {
+    width: 20px;
+    height: 20px;
+    display: block;
+    float: left;
+    margin-right: 10px;
+}
+
+.smallUpdate {
+    float: left;
+    margin-bottom: 8px;
+    margin-top: -5px;
+
+    &.list {
+        width: calc(100% - 25px);
+    }
+    &.task {
+        width: calc(100% - 61px);
+
+        .button {
+            float: right;
+        }
+
+        .inputField {
+            margin-bottom: 7px;
+        }
+    }
+
+    .inputField {
+        width: calc(100% - 37.05px);
+        background: #c4c4c4;
+        padding: 6px;
+    }
+
+    .button {
+        background: #efefef;
+        padding: 5px;
+        border: 1px #999 solid;
+    }
+}
+
+.CRUD {
+    .label {
+        float: left;
+        clear: both;
+        width: 100%;
+        font-weight: bold;
+        font-size: 14px;
+    }
+    .inputField, .inputTextarea {
+        background: #c4c4c4;
+        width: 270px;
+        padding: 5px;
+        margin: 8px 0;
+        float: left;
+        clear: both;
+    }
+
+    .inputField {
+        font-size: 15px;
+    }
+
+    .inputTextarea {
+        height: 61px;
+    }
+
+    .button {
+        width: 200px;
+        text-align: center;
+        background: #c4c4c4;
+        padding: 5px;
+        font-size: 14px;
+        margin-top: 12px;
+        float: left;
+        clear: both;
+    }
+
+    .taskAbortLink {
+        float: left;
+        display: block;
+        margin-top: 12px;
+        font-size: 13px;
+        padding: 5px;
+        text-align: right;
+        width: 60%;
+
+        a {
+            text-decoration: underline;
+        }
+    }
+
+    .ErrorMsg {
+        margin-top: 20px;
+        font-size: 12px;
+        color: #5e0f00;
+        font-weight: bold;
+    }
+
+    &.createTask {
+        .label {
+            font-weight: normal;
+        }
+        .button {
+            width: 40%;
+            float: left;
+        }
+    }
+}
+
+.name_desc {
+    width: calc(100% - 35px);
+    float: left;
+}
+
+.actionWrapper {
+    float: right;
+    position: relative;
+
+    .actionGroup {
+        position: absolute;
+        top: 16px;
+        width: 110px;
+        left: -80px;
+        padding: 5px 0;
+        background: #fff;
+        border: 1px #aaa solid;
+        border-radius: 3px;
+        box-shadow: 0 3px 8px #aaa;
+        z-index: 1;
+        display: none;
+
+        .btn {
+            float: left;
+            width: 100%;
+            padding: 0 5px;
+
+            &:hover {
+                background: blue;
+                color: #fff;
+            }
+        }
+    }
+
+    .actionTrigger {
+        width: 21px;
+        float: right;
+        margin-top: 5px;
+
+        .trigger {
+            float: left;
+            width: 6px;
+            height: 6px;
+            background: #bbb;
+            border-radius: 100%;
+            margin-right: 1px;
+        }
+    }
+
+    &.open {
+        .actionGroup {
+            display: block;
+        }
+    }
+}

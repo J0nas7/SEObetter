@@ -1,0 +1,147 @@
+*, html {
+    top: 0;
+    left: 0;
+    border: 0;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  
+  .footer {
+    clear: both;
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  body.Loginpage {
+    background: #54697f;
+    background-image: url("/control/template/images/blue.brickBackground.png");
+    overflow: hidden;
+    font-family: Roboto,sans-serif;
+  }
+  
+  div.Loginform {
+    float: left;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    width: 100vw;
+  }
+  
+  form.Loginform {
+    width: 80%;
+    min-width: 300px;
+    max-width: 500px;
+    height: auto;
+  }
+  
+  .logo-container {
+    float: left;
+    clear: both;
+    width: 100%;
+    height: auto;
+    margin-bottom: 10px;
+  }
+  
+    .logo-span {
+      display: block;
+      margin: 0 auto;
+      width: 86px;
+      height: 45px;
+    }
+  
+  form.Loginform input {
+    width: 100%;
+    border: none;
+    font-size: 16px;
+  }
+  
+  form.Loginform .input-container {
+    background: #fff;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 10px 0;
+    float: left;
+    clear: both;
+    width: 100%;
+    box-sizing: border-box;
+  }
+  
+  form.Loginform input[type=text] {
+    border-bottom: 1px #f7f7f7 solid;
+  }
+  
+  form.Loginform input[type=text], form.Loginform input[type=password] {
+    width: 95%;
+    color: #111;
+    padding: 10px;
+    float: left;
+  }
+  
+  form.Loginform input.pwd {
+    width: calc(95% - 29px) !important;
+  }
+  
+  .togglePassword {
+    float: left;
+    width: 29px;
+    height: 22px;
+    margin-top: 10px;
+    background: url("/control/template/images/eyeToggle.png") no-repeat;
+  }
+  
+  *:focus { outline: none !important; }
+  form.Loginform input[type=text]:-webkit-autofill, form.Loginform input[type=password]:-webkit-autofill { -webkit-box-shadow: 0 0 0 30px white inset; }
+  
+  form.Loginform .text-container {
+    margin: 10px 0;
+    float: left;
+    clear: both;
+    width: 100%;
+  }
+  
+  form.Loginform .text-container.success { background: #5a845f; }
+  form.Loginform .text-container.error { background: #7c5353; }
+  form.Loginform .text-container {
+    color: #fff;
+    font-size: 14px;
+    padding: 10px 0;
+    text-align: left;
+  }
+  
+  form.Loginform .text-container .Link {
+    color: #fff;
+    text-decoration: none;
+    width: 100%;
+    margin-bottom: 20px;
+    font-size: 13px;
+  }
+    @media (min-width: 576px) {
+      form.Loginform .text-container .Link {
+        font-size: 14px;
+        width: auto;
+        margin-bottom: 0;
+      }
+    }
+  
+  form.Loginform .text-container .Link:hover {
+    cursor: pointer;
+  }
+  
+  form.Loginform .text-container span:first-child {
+    float: left;
+  }
+  form.Loginform .text-container span:last-child {
+    float: right;
+  }
+  
+  form.Loginform input[type=submit] {
+    background: #435668;
+    color: #fff;
+    padding: 15px;
+    border: none;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+  }  
