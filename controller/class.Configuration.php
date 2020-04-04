@@ -28,9 +28,11 @@
                 if ($i == 7) { die("Basedir.html file not found"); }
             }
 
-            // GLOBAL VARIABLES
+            // GLOBAL CONSTANT VARIABLES
             define("BASEDIR", $folder_level);
             define("PAGE", (isset($_GET['page']) ? $_GET['page'] : "workspace"));
+            define("APP_URL", ($_SERVER['HTTP_HOST'] == "localhost" ? "/" : "http://app.seobetter.dk/"));
+            define("TEMPLATE_URL", APP_URL."template/");
 
             require_once TEMPLATE."index.php";
         }
