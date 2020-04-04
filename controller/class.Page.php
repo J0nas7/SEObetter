@@ -13,7 +13,7 @@ class Page {
         return self::$PageInstance;
     }
 
-    private function getPage($page, $load = true) {
+    public function getPage($page, $load = true) {
       if (!empty($page)) {
         if (file_exists(BASEDIR."pages/".$page."/index.php")) {
           if ($load) {

@@ -18,8 +18,19 @@
         private function __construct() {
             define("TEMPLATE", "template/");
 
-            $this->Page = Page::getInstance();
+            $this->Page = Page::getInstance($this);
             $this->Template = Template::getInstance($this);
+
+            // Locate Basedir.php and set the BASEDIR path
+            $folder_level = ""; $i = 0;
+            while (!file_exists($folder_level."Basedir.html")) {
+                $folder_level .= "../"; $i++;
+                if ($i == 7) { die("Basedir.html file not found"); }
+            }
+
+            // GLOBAL VARIABLES
+            define("BASEDIR", $folder_level);
+            define("PAGE", (isset($_GET['page']) ? $_GET['page'] : "workspace"));
 
             require_once TEMPLATE."index.php";
         }
