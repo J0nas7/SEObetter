@@ -24,7 +24,7 @@ $this->Template->TemplateLoadStylesheet($this->PAGE_LEVEL."login.css");*/
           <img src="/applesign/template/img/topbar-logo.png" />
         </span>
       </div>
-      <?
+      <?php
       if (isset($_GET['register'])) {
         require_once "register.php";
       } else if (isset($_GET['forgot'])) {

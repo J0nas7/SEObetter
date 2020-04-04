@@ -1,4 +1,4 @@
-<?
+<?php
 if (isset($_POST['Login'])) {
   if ($this->User->check_login($_POST['userMail'], $_POST['userPassword'])) {
     $success = $this->Utilities->redirect("/");
