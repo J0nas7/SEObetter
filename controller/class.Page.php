@@ -28,10 +28,10 @@ class Page {
         } else {
           $this->NotificationsArray[] = array("Type" => "Warning", "Message" => "Siden er ikke tilgængelig: Kunne ikke findes");
         }
-        } else {
-          $this->NotificationsArray[] = array("Type" => "Warning", "Message" => "Siden er ikke tilgængelig: Tom forespørgsel");
-          $this->Utilities->redirect($this->Utilities->LinkGiveString('page', 'websites'));
-        }
+      } else {
+        $this->NotificationsArray[] = array("Type" => "Warning", "Message" => "Siden er ikke tilgængelig: Tom forespørgsel");
+        $this->Utilities->redirect($this->Utilities->LinkGiveString('page', 'websites'));
+      }
     }
 
     public function LoadModel($Name) {
