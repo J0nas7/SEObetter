@@ -10,7 +10,7 @@ $this->Template->TemplateLoadStylesheet($this->PAGE_LEVEL."login.css");*/
 <head>
     <meta charset="utf-8">
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-    <title>Log på | Velkommen til Applesign</title>
+    <title>Log på | Velkommen til SEObetter</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="robots" content="noindex, nofollow">
     <meta http-equiv="cache-control" content="no-cache">
@@ -21,7 +21,8 @@ $this->Template->TemplateLoadStylesheet($this->PAGE_LEVEL."login.css");*/
     <form action="" method="post" class="Loginform">
       <div class="logo-container">
         <span class="logo-span">
-          <img src="/applesign/template/img/topbar-logo.png" />
+          <img src="https://static.xx.fbcdn.net/images/emoji.php/v9/t21/2/32/1f440.png" />
+          <!--/applesign/template/img/topbar-logo.png-->
         </span>
       </div>
       <?php

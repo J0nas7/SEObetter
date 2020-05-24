@@ -1,0 +1,58 @@
+.topbar, .topbar .topmenu {
+    height: 69px;
+    background: white;
+    border-bottom: 1px #ccc solid;
+    border-top: 0;
+}
+
+.topbar .logo {
+    background: url("https://static.xx.fbcdn.net/images/emoji.php/v9/t21/2/32/1f440.png");
+    width: 64px;
+    height: 64px;
+    background-repeat: no-repeat;
+}
+
+.topbar .applesign, .topbar .topmenu li a { color: #000; }
+.topbar .topmenu li { margin-right: 25px; }
+.topbar .applesign { padding-top: 20px; }
+.topbar .topmenu { padding-top: 17px; }
+
+.topbar-center {
+    max-width: none;
+}
+
+body {
+    background: #eee;
+}
+
+.leftmenu {
+    margin-top: 69px;
+    background: #eee;
+    border-right: 1px #ccc solid;
+    width: 300px;
+    height: calc(100% - 69px);
+    position: fixed;
+    overflow-y: auto;
+}
+
+.leftmenu span, .leftmenu a {
+    color: #111;
+    display: block;
+    width: 100%;
+    padding: 10px 20px;
+}
+.leftmenu .active span, .leftmenu .active a {
+    background: #dfdfdf;
+}
+
+.PageWrapper {
+    margin-top: 69px;
+    margin-left: 300px;
+    padding: 15px;
+}
+
+.PageWrapper .Content {
+    background: #fff;
+    border: 1px #ddd solid;
+    padding: 10px;
+}

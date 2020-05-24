@@ -1,36 +1,44 @@
 <?php
 class Page {
+    private $Config_c;
     private static $PageInstance = NULL;
+    public $PAGE_LEVEL;
 
-    private function __construct() {
-        
+    private function __construct($Config) {
+      $this->Config_c = $Config;
     }
 
-    static function getInstance() {
+    static function getInstance($Config) {
         if (!self::$PageInstance) {
-          self::$PageInstance = new Page();
+          self::$PageInstance = new Page($Config);
         }
         return self::$PageInstance;
     }
 
-    public function getPage($page, $load = true) {
+    public function checkPage($page, $load = true) {
       if (!empty($page)) {
         if (file_exists(BASEDIR."pages/".$page."/index.php")) {
           if ($load) {
             $this->PAGE_LEVEL = "pages/".$page."/";
-            require_once BASEDIR."pages/".$page."/index.php";
+            return BASEDIR."pages/".$page."/index.php";
+         } else {
+           return "Exists";
          }
         } else if (file_exists(BASEDIR."pages/".$page.".php")) {
           if ($load) {
             $this->PAGE_LEVEL = "pages/";
-            require_once BASEDIR."pages/".$page.".php";
+            return BASEDIR."pages/".$page.".php";
+          } else {
+            return "Exists";
           }
         } else {
           $this->NotificationsArray[] = array("Type" => "Warning", "Message" => "Siden er ikke tilgængelig: Kunne ikke findes");
+          return false;
         }
       } else {
         $this->NotificationsArray[] = array("Type" => "Warning", "Message" => "Siden er ikke tilgængelig: Tom forespørgsel");
         $this->Utilities->redirect($this->Utilities->LinkGiveString('page', 'websites'));
+        return false;
       }
     }
 
